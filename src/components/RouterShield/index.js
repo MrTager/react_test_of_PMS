@@ -10,5 +10,7 @@ const RouterShield = ({component: Component, ...rest}) => (
             pathname: '/login',
             state:{from:props.location}
         }}/>
-    )/>
+    )}/>
 )
+
+export default RouterShield

@@ -1,7 +1,7 @@
-import { setCookies,getCookies,removeCookies } from './Cookie'
+import { getCookies } from './Cookie'
 
 const cookieName = "USERINFORMATION";
 
-export function isCookie(){
+export function Jurisdiction(){
     return getCookies(cookieName);
 }
