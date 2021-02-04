@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.css'
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox,Popconfirm } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 
@@ -8,14 +8,21 @@ export default class Login extends React.Component {
     state = {
         showBox:'login',
         url:'',
-        loading:false
+        loading:false,
+        text:{
+            forgetPwd:'请联系管理员！',
+            register:'请联系管理员开通！'
+        }
     }
     onFinish = (values) => {
         console.log('Received values of form: ', values);
     };
+    forgetPwsConfirm = () => {
+    }
+    registerConfirm = () => {
+    }
     //study life cycle
     componentDidMount(){
-        
     }
 
     render() {
@@ -62,16 +69,36 @@ export default class Login extends React.Component {
                                 <Checkbox>记住我</Checkbox>
                             </Form.Item>
                             <Form.Item>
-                                <a className="login-form-forgot" href="">
-                                忘记密码
+                                <Popconfirm
+                                    placement="right"
+                                    title={this.state.text.forgetPwd}
+                                    onConfirm={this.forgetPwsConfirm}
+                                    okText="确定"
+                                    cancelText="取消"
+                                >
+                                <a className="login-form-forgot" href="#">
+                                    忘记密码
                                 </a>
+                                </Popconfirm>
+                                
                             </Form.Item>
 
                             <Form.Item>
                                 <Button type="primary" htmlType="submit" className="login-form-button">
                                 登录
                                 </Button>
-                                或者 <a href="">注册</a>
+                                或者 
+                                <Popconfirm
+                                    placement="right"
+                                    title={this.state.text.register}
+                                    onConfirm={this.registerConfirm}
+                                    okText="确定"
+                                    cancelText="取消"
+                                >
+                                <a href="#">
+                                注册
+                                </a>
+                                </Popconfirm>
                             </Form.Item>
                         </Form>
                     </div>
