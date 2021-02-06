@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { config } from 'dotenv/types'
+
 
 const service = axios.create({
     baseURL:"",
@@ -10,6 +10,7 @@ const service = axios.create({
         }
     }
 })
+axios.defaults.baseURL=process.env.NODE_ENV==='development'?'http://localhost:3001':'http://192.168.0.1';
 
 //request interceptor
 service.interceptors.request.use(

@@ -2,6 +2,7 @@ import React from 'react'
 import './style.css'
 import { Form, Input, Button, Checkbox,Popconfirm } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { login } from '../../api/user';
 
 
 export default class Login extends React.Component {
@@ -16,6 +17,13 @@ export default class Login extends React.Component {
     }
     onFinish = (values) => {
         console.log('Received values of form: ', values);
+        login(values)
+        .then((res)=>{
+            console.log("登录页面内请求成功",res)
+        })
+        .catch((err)=>{
+            console.log("登录页面内请求失败",err)
+        })
     };
     forgetPwsConfirm = () => {
     }
@@ -23,6 +31,7 @@ export default class Login extends React.Component {
     }
     //study life cycle
     componentDidMount(){
+
     }
 
     render() {

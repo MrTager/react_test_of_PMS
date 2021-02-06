@@ -1,4 +1,6 @@
-const user = {
+const Mock = require('mockjs')
+
+const login = Mock.mock({
     "errorCode": 0,
     "message": "用户登录成功",
     "item": {
@@ -20,17 +22,17 @@ const user = {
         ]
       }
     }
-}
+})
+
+// export default {
+//   login,
+// }
 module.exports = [
-    {
-        url:"/user/login/",
-        type:'post',
-        response:config => {
-            const { } = config.body
-            return {
-                code:200,
-                data:user
-            }
-        }
+  {
+    url: '/mocktest/login',
+    type: 'post',
+    response: config => {
+      return login
     }
+  },
 ]
