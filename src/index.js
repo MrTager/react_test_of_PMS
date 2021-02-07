@@ -14,7 +14,7 @@ import { ConfigProvider } from 'antd';
 // antd international
 import zhCN from 'antd/lib/locale/zh_CN';
 import store from './store'
-import './mock'
+require('./mock')
 
 
 ReactDOM.render(

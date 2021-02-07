@@ -1,7 +1,7 @@
 //此文件为纯函数文件，只承担计算state的功能，不适合承担其他功能，也承担不了，理论上，纯函数不能进行读写操作
 import * as user from './action-type'
 let defaultState = {
-
+    userInfo:{},
 }
 export default (state = defaultState, action = {}) => {
   switch (action.type) {

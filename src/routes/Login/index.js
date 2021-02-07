@@ -17,12 +17,12 @@ export default class Login extends React.Component {
     }
     onFinish = (values) => {
         console.log('Received values of form: ', values);
-        login(values)
+        login({serial_code:'12531',password:'12531'})
         .then((res)=>{
-            console.log("登录页面内请求成功",res)
+            console.log("登录页面外请求成功",JSON.stringify(res))
         })
         .catch((err)=>{
-            console.log("登录页面内请求失败",err)
+            console.log("登录页面外请求失败",err)
         })
     };
     forgetPwsConfirm = () => {

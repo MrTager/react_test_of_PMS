@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 const service = axios.create({
-    baseURL:'',//process.env.REACT_APP_URL_BASE
+    baseURL:process.env.REACT_APP_URL_BASE,//process.env.REACT_APP_URL_BASE
     timeout:5000,
     headers:{
         "post":{

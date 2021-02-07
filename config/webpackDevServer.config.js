@@ -1,7 +1,6 @@
 'use strict';
 
 const fs = require('fs');
-const apiMocker = require('webpack-api-mocker')
 const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware');
 const evalSourceMapMiddleware = require('react-dev-utils/evalSourceMapMiddleware');
 const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware');
@@ -115,8 +114,6 @@ module.exports = function (proxy, allowedHost) {
         // This registers user provided middleware for proxy reasons
         require(paths.proxySetup)(app);
       }
-      // require('../mock/mock-server')
-      // apiMocker(app, paths.resolve('../mock/api.js'))
     },
     after(app) {
       // Redirect to `PUBLIC_URL` or `homepage` from `package.json` if url not match

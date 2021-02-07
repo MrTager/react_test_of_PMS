@@ -5,4 +5,5 @@ export const SAVE_USERINFO = 'SAVE_USERINFO'
 export const SAVE_ATTRINFO = 'SAVE_ATTRINFO'
 
 // 修改用信息
-export const MODIFY_USERINFO = 'MODIFY_USERINFO'
+export const REMOVE_USERINFO = 'REMOVE_USERINFO'
+
