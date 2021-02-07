@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 const service = axios.create({
-    baseURL:"",
+    baseURL:'',//process.env.REACT_APP_URL_BASE
     timeout:5000,
     headers:{
         "post":{
@@ -10,7 +10,6 @@ const service = axios.create({
         }
     }
 })
-axios.defaults.baseURL=process.env.NODE_ENV==='development'?'http://localhost:3001':'http://192.168.0.1';
 
 //request interceptor
 service.interceptors.request.use(

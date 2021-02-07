@@ -30,10 +30,9 @@ export default class Login extends React.Component {
     registerConfirm = () => {
     }
     //study life cycle
-    componentDidMount(){
-
+    componentWillMount() {
+        console.log('环境变量',process.env.REACT_APP_URL_BASE);
     }
-
     render() {
         return (
             <div id='login-page' style={styles.page}>
