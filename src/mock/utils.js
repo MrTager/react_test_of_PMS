@@ -1,5 +1,5 @@
 
-function decode(url) {
+export function decode(url) {
     const search = decodeURIComponent(url.split('?')[1]).replace(/\+/g, ' ')
     if (!search) {
       return {}
@@ -16,6 +16,16 @@ function decode(url) {
     })
     return obj
 }
-module.exports = {
-    decode
+
+export function decodeParam(str){
+  let newObj = {};
+  str.split('&').map(item=>{
+    let arr2 = item.split('=')
+    let obj = {}
+    obj[arr2[0]] = arr2[1]
+    return obj
+  }).forEach((item)=>{
+    newObj = Object.assign(newObj,item)
+  })
+  return newObj
 }

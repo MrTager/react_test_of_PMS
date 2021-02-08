@@ -1,0 +1,38 @@
+{
+    "errorCode": 0,
+    "message": "更新产品BOM项目信息成功",
+    "params": "update",
+    "item": {
+      "id": 206,
+      "name": "",
+      "remark": "",
+      "addDateTime": "",
+      "modifyDateTime": "",
+      "No": "",
+      "material": {
+        "id": 192,
+        "name": "11111",
+        "remark": "",
+        "addDateTime": "2020-12-21 10:18:52",
+        "modifyDateTime": "2020-12-21 10:19:11",
+        "serialCode": "99999999",
+        "describe": "1",
+        "spec": "1",
+        "package": "1",
+        "brand": "1",
+        "imageCode": "1",
+        "unit": "1",
+        "packFormat": "line",
+        "supplier": "1"
+      },
+      "groupId": 0,
+      "canReplace": false,
+      "parentId": "50140674",
+      "itemType": "hardware",
+      "count": "7",
+      "pcbMark": "C2,",
+      "keyItem": false,
+      "category": "component",
+      "relatedBOM": "2"
+    }
+  }

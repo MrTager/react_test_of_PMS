@@ -1,18 +1,26 @@
 import request from '../utils/request'
 
-
-export function login (data){
+/**
+ * 
+ * @param {*} serial_code string 账号
+ * @param {*} password string 密码
+ */
+export function login (serial_code,password){
     return request({
         url:'/user/login/',
         method:'post',
-        data
+        data:{serial_code:serial_code,password:password}
     })
 }
-
-export function getUserInfo (data){
+/**
+ * 
+ * @param {*} serial_code string 账号
+ * @param {*} password string 密码
+ */
+export function getUserInfo (serial_code,password){
     return request({
-        url:'/user/info/',
+        url:'\/user\/info\/',
         method:'get',
-        params: { data }
+        params: { 'serial_code':serial_code,'password':password }
     })
 }

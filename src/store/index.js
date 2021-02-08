@@ -1,11 +1,11 @@
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+import * as Login from './Login/reducer'
+let store = createStore(
+  combineReducers({
+      ...Login
+    }),
+  applyMiddleware(thunk)
+);
 
-import { createStore,applyMiddleware } from 'redux'
-import userReducer from './reducer'
-import thunk from 'redux-thunk'
-
-
-const store = createStore(
-    userReducer,
-    applyMiddleware(thunk)
-)
-export default store
+export default store;

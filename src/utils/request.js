@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { message } from 'antd';
 
 
 const service = axios.create({
@@ -36,7 +37,8 @@ service.interceptors.response.use(
     response => {
         const res = response.data
         if(res.errorCode !== 0){
-            console.error("请求错误",res)
+            message.error(res.message)
+            return Promise.reject(res)
         }else{
           return res
         }

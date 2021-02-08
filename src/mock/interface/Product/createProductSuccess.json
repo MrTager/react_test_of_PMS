@@ -1,0 +1,30 @@
+{
+    "errorCode": 0,
+    "message": "新增产品信息成功",
+    "params": "create",
+    "item": {
+      "id": 15,
+      "name": "",
+      "remark": "",
+      "addDateTime": "",
+      "modifyDateTime": "",
+      "mainType": "",
+      "productType": "",
+      "flag": "",
+      "company": "",
+      "serialCode": "98399089",
+      "model": "UND6-ZD01-1",
+      "spec": "",
+      "standard": "",
+      "barcode": "",
+      "seriesName": "",
+      "project": "",
+      "color": "",
+      "linkProduct": "",
+      "versionLink": "base",
+      "productState": "develop",
+      "designer": "",
+      "BOM": null,
+      "images": []
+    }
+  }

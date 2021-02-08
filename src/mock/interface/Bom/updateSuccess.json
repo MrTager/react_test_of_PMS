@@ -1,0 +1,40 @@
+{
+    "errorCode": 0,
+    "message": "更新产品BOM信息成功",
+    "params": "update",
+    "item": {
+      "id": 8,
+      "name": "",
+      "remark": "",
+      "addDateTime": "",
+      "modifyDateTime": "",
+      "product": {
+        "id": 4,
+        "name": "",
+        "remark": "",
+        "addDateTime": "2020-12-21 13:02:38",
+        "modifyDateTime": "2020-12-21 13:02:38",
+        "mainType": "",
+        "productType": "",
+        "flag": "",
+        "company": "",
+        "serialCode": "98309086",
+        "model": "U86K41ND6-ZD01-1",
+        "spec": "",
+        "standard": "",
+        "barcode": "",
+        "seriesName": "",
+        "project": "",
+        "color": "",
+        "linkProduct": "",
+        "versionLink": "base",
+        "productState": "develop",
+        "designer": "",
+        "BOM": null
+      },
+      "releaseNotes": "",
+      "version": "1.0",
+      "status": "",
+      "nodes": []
+    }
+  }

@@ -1,10 +1,11 @@
 //import react
 import React, {Component} from 'react';
 import {Route,Switch} from 'react-router-dom'
-import Login from './routes/Login'
+
 import './App.css';
 import RouterShield from './components/RouterShield'
-import Index from './routes/Index'
+import Index from './pages/Index'
+import Login from './pages/Login'
 
 class App extends Component {
   render(){

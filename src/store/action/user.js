@@ -1,4 +1,4 @@
-import * as user from './action-type'
+import * as user from '../action-type'
 
 // 保存用户消息
 export const saveUserInfo = (userInfo) => {
@@ -25,4 +25,3 @@ export const modifyUserInfo = (key, value) => {
       value
   }
 }
-

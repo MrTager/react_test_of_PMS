@@ -1,11 +1,18 @@
 import React from 'react'
 import './style.css'
-import { Form, Input, Button, Checkbox,Popconfirm } from 'antd';
+import { Form, Input, Button, Checkbox,Popconfirm,message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { login } from '../../api/user';
+import propTypes from 'prop-types';
+import { saveUserDate } from "@/store/Login/action";
+import { setCookies } from "../../utils/Cookie";
+import { login,getUserInfo } from '../../api/user';
+import { connect } from 'react-redux';
 
 
-export default class Login extends React.Component {
+class Login extends React.Component {
+    static propTypes  = {
+        saveUserDate : propTypes.func.isRequired,
+    }
     state = {
         showBox:'login',
         url:'',
@@ -17,12 +24,27 @@ export default class Login extends React.Component {
     }
     onFinish = (values) => {
         console.log('Received values of form: ', values);
-        login({serial_code:'12531',password:'12531'})
+        login(values.username,values.password)
         .then((res)=>{
             console.log("登录页面外请求成功",JSON.stringify(res))
+            getUserInfo(values.username,values.password)
+            .then((res)=>{
+                console.log("请求信息",res)
+            })
+            .catch((err)=>{
+
+            })
+            // if(values.remember){
+            //     //保存到cookie
+            //     const aaa = setCookies(process.env.REACT_APP_TOKEN_NAME,res,7)
+            //     console.log("aaa",aaa)
+            //     this.props.saveUserDate(res,"userInfo")
+            // }else{
+            //     this.props.saveUserDate(res,"userInfo")
+            // }
         })
         .catch((err)=>{
-            console.log("登录页面外请求失败",err)
+           
         })
     };
     forgetPwsConfirm = () => {
@@ -126,3 +148,9 @@ const styles = {
         border:'1px solid rgba(0,0,0,0)'
     }
 }
+
+export default connect(state => ({
+    userInfo:state.userInfo
+}),{
+    saveUserDate
+})(Login)

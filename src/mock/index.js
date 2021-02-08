@@ -1,14 +1,11 @@
 const Mock = require('mockjs')
-const { decode } = require("./utils")
 
-const user = require('./interface/user')
-
+const user = require('./interface/User').default
 
 
 const mocks = [
   ...user,
 ]
-
 for (const i of mocks) {
   Mock.mock(i.url, i.type, i.response)
 }
