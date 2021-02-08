@@ -20,9 +20,9 @@ export function decode(url) {
 export function decodeParam(str){
   let newObj = {};
   str.split('&').map(item=>{
-    let arr2 = item.split('=')
+    let arr = item.split('=')
     let obj = {}
-    obj[arr2[0]] = arr2[1]
+    obj[arr[0]] = arr[1]
     return obj
   }).forEach((item)=>{
     newObj = Object.assign(newObj,item)

@@ -19,8 +19,8 @@ export function login (serial_code,password){
  */
 export function getUserInfo (serial_code,password){
     return request({
-        url:'\/user\/info\/',
+        url:'/user/info/',
         method:'get',
-        params: { 'serial_code':serial_code,'password':password }
+        params: { serial_code:serial_code,password:password }
     })
 }

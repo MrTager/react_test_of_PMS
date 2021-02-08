@@ -24,10 +24,9 @@ export default  [
     }
   },
   {
-    url:'\/user\/info\/',
+    url:RegExp('/user/info/' + ".*"),
     type:'get',
     response: config => {
-      console.log("lalal",config)
       return userInfo
     }
   }

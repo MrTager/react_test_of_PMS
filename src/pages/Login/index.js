@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 
 class Login extends React.Component {
     static propTypes  = {
+        userInfo: propTypes.object.isRequired,
         saveUserDate : propTypes.func.isRequired,
     }
     state = {
@@ -26,22 +27,20 @@ class Login extends React.Component {
         console.log('Received values of form: ', values);
         login(values.username,values.password)
         .then((res)=>{
-            console.log("登录页面外请求成功",JSON.stringify(res))
             getUserInfo(values.username,values.password)
             .then((res)=>{
-                console.log("请求信息",res)
+                    if(values.remember){
+                        //保存到cookie
+                        setCookies(process.env.REACT_APP_TOKEN_NAME,res.item,7)
+                        this.props.saveUserDate(res.item,"userInfo")
+                    }else{
+                        this.props.saveUserDate(res.item,"userInfo")
+                    }
             })
             .catch((err)=>{
 
             })
-            // if(values.remember){
-            //     //保存到cookie
-            //     const aaa = setCookies(process.env.REACT_APP_TOKEN_NAME,res,7)
-            //     console.log("aaa",aaa)
-            //     this.props.saveUserDate(res,"userInfo")
-            // }else{
-            //     this.props.saveUserDate(res,"userInfo")
-            // }
+           
         })
         .catch((err)=>{
            
@@ -53,11 +52,11 @@ class Login extends React.Component {
     }
     //study life cycle
     componentWillMount() {
-        console.log('环境变量',process.env.REACT_APP_URL_BASE);
     }
     render() {
         return (
             <div id='login-page' style={styles.page}>
+                <div>{JSON.stringify(this.props.userInfo)}</div>
                 <div className={'formContainer'}>
                     <div className={"inputBox"}>
                         <Form
@@ -148,9 +147,11 @@ const styles = {
         border:'1px solid rgba(0,0,0,0)'
     }
 }
-
-export default connect(state => ({
-    userInfo:state.userInfo
-}),{
+const mapStateToProps = (state)=>{
+    return {
+        userInfo:state.userData.userInfo
+    }
+}
+export default connect(mapStateToProps,{
     saveUserDate
 })(Login)
