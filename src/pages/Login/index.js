@@ -8,6 +8,7 @@ import { setCookies } from "../../utils/Cookie";
 import { login,getUserInfo } from '../../api/user';
 import { connect } from 'react-redux';
 
+const loginKey = 'updatable';
 
 class Login extends React.Component {
     static propTypes  = {
@@ -23,8 +24,9 @@ class Login extends React.Component {
             register:'请联系管理员开通！'
         }
     }
-    onFinish = (values) => {
+    login = (values) => {
         console.log('Received values of form: ', values);
+        message.loading({ content: '正在登录...', loginKey });
         login(values.username,values.password)
         .then((res)=>{
             getUserInfo(values.username,values.password)
@@ -33,6 +35,8 @@ class Login extends React.Component {
                         //保存到cookie
                         setCookies(process.env.REACT_APP_TOKEN_NAME,res.item,7)
                         this.props.saveUserDate(res.item,"userInfo")
+                        message.success({ content: '登录成功!', loginKey, duration: 2 });
+                        this.props.history.push('/')
                     }else{
                         this.props.saveUserDate(res.item,"userInfo")
                     }
@@ -65,7 +69,7 @@ class Login extends React.Component {
                             initialValues={{
                                 remember: true,
                             }}
-                            onFinish={this.onFinish}
+                            onFinish={this.login}
                         >
                             <Form.Item
                                 name="username"
@@ -149,7 +153,7 @@ const styles = {
 }
 const mapStateToProps = (state)=>{
     return {
-        userInfo:state.userData.userInfo
+        userInfo:state.Login.userInfo
     }
 }
 export default connect(mapStateToProps,{

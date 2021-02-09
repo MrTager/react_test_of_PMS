@@ -1,7 +1,5 @@
 import { getCookies } from './Cookie'
 
-const cookieName = "USERINFORMATION";
-
 export function Jurisdiction(){
-    return getCookies(cookieName);
+    return getCookies(process.env.REACT_APP_TOKEN_NAME);
 }

@@ -5,10 +5,9 @@ let defaultState = {
   lalal:{}
 }
 // 用户数据
-export const userData = (state = defaultState , action = {}) => {
+export const Login = (state = defaultState , action = {}) => {
   switch(action.type){
     case login.SAVE_USER_DATA:
-      console.log("duixiang",{...state, ...{[action.datatype]: action.value}})
       return {...state, ...{[action.datatype]: action.value}}
     default:
       return state;
