@@ -1,3 +1,17 @@
 .collapsed{
-
+    float: left;
+}
+ul,li{
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+.header-ul{
+    width: auto;
+    height: 64px;
+    li{
+        width: 64px;
+        height: 64px;
+        float: left;
+    }
 }
