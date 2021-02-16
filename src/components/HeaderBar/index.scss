@@ -13,5 +13,29 @@ ul,li{
         width: 64px;
         height: 64px;
         float: left;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .avatar{
+        width: 30px;
+        height: 30px;
+        overflow: hidden;
+        border-radius: 15px;
+    }
+}
+.userMenu-container{
+    width: 100%;
+    .userMenu-ul{
+        width: 100%;
+        li:hover{
+            background-color: rgb(216, 216, 216);
+        }
+        li{
+            width: 100%;
+            height: 30px;
+            color: dimgrey;
+            line-height: 30px;
+        }
     }
 }
