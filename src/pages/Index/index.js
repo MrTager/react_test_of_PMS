@@ -1,6 +1,7 @@
 import React from 'react'
 import {Layout} from 'antd'
 import  HeaderBar from "../../components/HeaderBar";
+import SiderNav from "../../components/SiderNav"
 import { removeCookies } from "../../utils/Cookie";
 const { Sider,Header,Content,Footer } = Layout;
 
@@ -25,11 +26,11 @@ class Index extends React.Component {
                         trigger={null}
                         collapsed={this.state.collapsed}
                     >
-                        导航栏
+                       <SiderNav collapsed={this.state.collapsed}/>
                     </Sider>
                     <Layout>
                         <Header style={{background: '#fff', padding: '0 16px'}}>
-                            <HeaderBar/>
+                            <HeaderBar collapsed={this.state.collapsed} onToggle={this.toggle}/>
                         </Header>
                         <Content>Content</Content>
                         <Footer style={{textAlign: 'center'}}>PRODUCT MANAGE SYSTEM @CREATE BY MRTAGER</Footer>

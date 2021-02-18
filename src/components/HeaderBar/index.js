@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import propTypes from 'prop-types';
 import { defaults } from 'js-cookie';
 import { connect } from 'react-redux';
-import { telescopicSldebar } from '../../store/HeaderBar/action'
 import { MenuFoldOutlined,MenuUnfoldOutlined,ShrinkOutlined,ArrowsAltOutlined } from '@ant-design/icons';
 import screenfull from "screenfull";
 import { message,Popover,Image } from 'antd';
@@ -12,15 +11,13 @@ import './index.css'
 
 class HeaderBar extends Component {
     static propTypes = {
-        collapsed: propTypes.bool.isRequired,
-        telescopicSldebar: propTypes.func.isRequired
     }
     state = {
         iconSize:25,
-        screenFull:false
+        screenFull:false,
     }
     changeCollapsed = () => {
-        this.props.telescopicSldebar('collapsed',this.props.collapsed)
+        this.props.onToggle()
     }
     changeScreenFull = () => {
         if(screenfull.isEnabled){
@@ -44,7 +41,7 @@ class HeaderBar extends Component {
             <div id="header-bar">
                 <div className={'collapsed'} onClick={this.changeCollapsed}>
                     {
-                        this.props.collapsed ? (<MenuFoldOutlined style={{ fontSize: `${this.state.iconSize}px` }}/>) : (<MenuUnfoldOutlined style={{ fontSize: `${this.state.iconSize}px` }} />)
+                        this.props.collapsed ?   (<MenuUnfoldOutlined style={{ fontSize: `${this.state.iconSize}px` }} />) : (<MenuFoldOutlined style={{ fontSize: `${this.state.iconSize}px` }}/>)
                     }
                 </div>
                 
@@ -71,9 +68,6 @@ class HeaderBar extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        collapsed:state.HeaderBar.collapsed
     }
 }
-export default connect(mapStateToProps,{
-    telescopicSldebar
-})(HeaderBar)
+export default connect(mapStateToProps)(HeaderBar)
