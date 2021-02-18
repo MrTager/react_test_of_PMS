@@ -12,7 +12,18 @@ import {
   MailOutlined,
 } from '@ant-design/icons';
 
+
 const { SubMenu } = Menu;
+
+const iconGroup = {
+    AppstoreOutlined:(<AppstoreOutlined/>),
+    MenuUnfoldOutlined:(<MenuUnfoldOutlined/>),
+    MenuFoldOutlined:(<MenuFoldOutlined/>),
+    PieChartOutlined:(<PieChartOutlined/>),
+    DesktopOutlined:(<DesktopOutlined/>),
+    ContainerOutlined:(<ContainerOutlined/>),
+    MailOutlined:(<MailOutlined/>)
+}
 
 @withRouter
 class NavigationOption extends Component {
@@ -23,48 +34,90 @@ class NavigationOption extends Component {
     componentDidMount(){
         const pathname = this.props.location.pathname
         const rank = pathname.split('/')
-        console.log("当前路径",pathname.lastIndexOf('/'),rank)
+        console.log("组件初始化",pathname,rank)
         switch (rank.length) {
+            case 2 : 
+                this.setState({
+                    selectedKeys: [pathname]
+                })
+                break;
+            case 5 :
+                this.setState({
+                  selectedKeys: [pathname],
+                  openKeys: [rank.slice(0, 3).join('/'), rank.slice(0, 4).join('/')]
+                })
+                break;
             default:
                 this.setState({
                     selectedKeys:[pathname],
+                    openKeys: [pathname.substr(0, pathname.lastIndexOf('/'))]
                 })
-                break;
         }
     }
+    renderSubMenu = ({key,icon,title,subs}) => {
+        return (
+            <Menu.SubMenu key={key} title={
+                <span>
+                    {icon && iconGroup[icon]}
+                    <span>{title}</span>
+                </span>
+            }>
+                {
+                    subs && subs.map(item => {
+                        return item.subs && item.subs.length > 0 ? this.renderSubMenu(item) : this.renderMenuItem(item)
+                    })
+                }
+            </Menu.SubMenu>
+        )
+    }
+    renderMenuItem = ({key,icon,title}) => {
+        return (
+            <Menu.Item key={key}>
+                <Link to={key}>
+                    { icon && iconGroup[icon] }
+                    <span>{title}</span>
+                </Link>
+            </Menu.Item>
+        )
+    }
+    onOpenChange = (openKeys) => {
+        console.log("点击了",openKeys)
+        if (openKeys.length === 0 || openKeys.length === 1) {
+            this.setState({
+              openKeys
+            })
+            return
+        }
+        const latestOpenKey = openKeys[openKeys.length - 1]
+        if (latestOpenKey.includes(openKeys[0])) {
+            this.setState({
+              openKeys
+            })
+          } else {
+            this.setState({
+              openKeys: [latestOpenKey]
+            })
+          }
+    }
     render() {
+        const {openKeys,selectedKeys} = this.state
         return (
             <div>
-                <Menu
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
-                    mode="inline"
-                    theme="dark"
-                    // inlineCollapsed={this.props.collapsed}
-                    >
-                    <Menu.Item key="1" icon={<PieChartOutlined />}>
-                        Option 1
-                    </Menu.Item>
-                    <Menu.Item key="2" icon={<DesktopOutlined />}>
-                        Option 2
-                    </Menu.Item>
-                    <Menu.Item key="3" icon={<ContainerOutlined />}>
-                        Option 3
-                    </Menu.Item>
-                    <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
-                        <Menu.Item key="5">Option 5</Menu.Item>
-                        <Menu.Item key="6">Option 6</Menu.Item>
-                        <Menu.Item key="7">Option 7</Menu.Item>
-                        <Menu.Item key="8">Option 8</Menu.Item>
-                    </SubMenu>
-                    <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Navigation Two">
-                        <Menu.Item key="9">Option 9</Menu.Item>
-                        <Menu.Item key="10">Option 10</Menu.Item>
-                        <SubMenu key="sub3" title="Submenu">
-                        <Menu.Item key="11">Option 11</Menu.Item>
-                        <Menu.Item key="12">Option 12</Menu.Item>
-                        </SubMenu>
-                    </SubMenu>
+               <Menu 
+               theme="dark" 
+               mode="inline" 
+               defaultSelectedKeys={['1']}
+               onClick={({key}) => this.setState({selectedKeys: [key]})}
+               openKeys={openKeys}
+               selectedKeys={selectedKeys}
+               onOpenChange={this.onOpenChange}
+               mode='inline'
+               >
+                    {
+                        this.props.menus && this.props.menus.map(item => {
+                            return item.subs && item.subs.length > 0 ? this.renderSubMenu(item) : this.renderMenuItem(item)
+                        })
+                    }
                 </Menu>
             </div>
         )

@@ -5,12 +5,12 @@ import NavigationOption from '../NavigationOptions'
 const menus = [
     {
         title:'产品管理',
-        icon:'productManage',
+        icon:'AppstoreOutlined',
         key: '/productManage',
     },
     {
         title: '导航组件',
-        icon: 'bars',
+        icon: 'MenuUnfoldOutlined',
         key: '/navigation',
         subs: [
           {key: '/navigation/dropdown', title: '下拉菜单', icon: ''},
