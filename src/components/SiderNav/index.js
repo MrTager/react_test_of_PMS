@@ -4,6 +4,11 @@ import NavigationOption from '../NavigationOptions'
 
 const menus = [
     {
+        title:'主页',
+        icon:'AppstoreOutlined',
+        key: '/',
+    },
+    {
         title:'产品管理',
         icon:'AppstoreOutlined',
         key: '/productManage',

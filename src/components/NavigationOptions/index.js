@@ -34,7 +34,6 @@ class NavigationOption extends Component {
     componentDidMount(){
         const pathname = this.props.location.pathname
         const rank = pathname.split('/')
-        console.log("组件初始化",pathname,rank)
         switch (rank.length) {
             case 2 : 
                 this.setState({
@@ -81,7 +80,6 @@ class NavigationOption extends Component {
         )
     }
     onOpenChange = (openKeys) => {
-        console.log("点击了",openKeys)
         if (openKeys.length === 0 || openKeys.length === 1) {
             this.setState({
               openKeys
