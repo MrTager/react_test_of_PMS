@@ -14,7 +14,7 @@ export default  [
     url: '/user/login/',
     type: 'post',
     response: config => {
-      const {serial_code,password } = decodeParam(config.body)
+      const { serial_code,password } = decodeParam(config.body)
       if(serial_code === '12531' && password === '12531'){
        return login
       }else{

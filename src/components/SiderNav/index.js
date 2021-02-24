@@ -6,22 +6,12 @@ const menus = [
     {
         title:'主页',
         icon:'AppstoreOutlined',
-        key: '/',
+        key: '/homePage',
     },
     {
         title:'产品管理',
         icon:'AppstoreOutlined',
         key: '/productManage',
-    },
-    {
-        title: '导航组件',
-        icon: 'MenuUnfoldOutlined',
-        key: '/navigation',
-        subs: [
-          {key: '/navigation/dropdown', title: '下拉菜单', icon: ''},
-          {key: '/navigation/menu', title: '导航菜单', icon: ''},
-          {key: '/navigation/steps', title: '步骤条', icon: ''},
-        ]
     }
 ]
 
