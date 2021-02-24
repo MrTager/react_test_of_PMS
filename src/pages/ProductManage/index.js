@@ -4,14 +4,13 @@ import { Table, Tag, Space } from 'antd';
 import { productList } from '../../api/product';
 import { Button } from 'antd';
 
-const getTableInfo = ( page,rows) => {
+const getTableInfo = ( page,rows ) => {
     return new Promise((resolve,reject)=>{
-    productList({'page':page,'rows':rows})
-    .then(response => {
-        resolve(response)
+        productList({'page':page,'rows':rows})
+        .then(response => {
+            resolve(response)
+        })
     })
-    })
-
 }
 
 
@@ -62,8 +61,7 @@ class ProductManage extends Component {
                     <a>删除</a>
                   </Space>
                 ),
-              },
-           
+            },
         ],
         tableData:[],
         total:0,
