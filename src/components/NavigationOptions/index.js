@@ -81,7 +81,7 @@ class NavigationOption extends Component {
         )
     }
     onOpenChange = (openKeys) => {
-        console.log("点击导航",openKeys)
+        //console.log("点击导航",openKeys)
         if (openKeys.length === 0 || openKeys.length === 1) {
             this.setState({
               openKeys
@@ -93,26 +93,26 @@ class NavigationOption extends Component {
             this.setState({
               openKeys
             })
-          } else {
+        } else {
             this.setState({
               openKeys: [latestOpenKey]
             })
-          }
+        }
     }
     render() {
         const {openKeys,selectedKeys} = this.state
         return (
             <div>
                <Menu 
-               theme="dark" 
-               mode="inline" 
-               defaultSelectedKeys={['1']}
-               onClick={({key}) => this.setState({selectedKeys: [key]})}
-               openKeys={openKeys}
-               selectedKeys={selectedKeys}
-               onOpenChange={this.onOpenChange}
-               mode='inline'
-               >
+                theme="dark" 
+                mode="inline" 
+                defaultSelectedKeys={['1']}
+                onClick={({key}) => this.setState({selectedKeys: [key]})}
+                openKeys={openKeys}
+                selectedKeys={selectedKeys}
+                onOpenChange={this.onOpenChange}
+                mode='inline'
+                >
                     {
                         this.props.menus && this.props.menus.map(item => {
                             return item.subs && item.subs.length > 0 ? this.renderSubMenu(item) : this.renderMenuItem(item)

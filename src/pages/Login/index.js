@@ -31,15 +31,15 @@ class Login extends React.Component {
         .then((res)=>{
             getUserInfo(values.username,values.password)
             .then((res)=>{
-                    if(values.remember){
-                        //保存到cookie
-                        setCookies(process.env.REACT_APP_TOKEN_NAME,res.item,7)
-                        this.props.saveUserDate(res.item,"userInfo")
-                        message.success({ content: '登录成功!', loginKey, duration: 2 });
-                        this.props.history.push('/')
-                    }else{
-                        this.props.saveUserDate(res.item,"userInfo")
-                    }
+                if(values.remember){
+                    //保存到cookie
+                    setCookies(process.env.REACT_APP_TOKEN_NAME,res.item,7)
+                    this.props.saveUserDate(res.item,"userInfo")
+                    message.success({ content: '登录成功!', loginKey, duration: 2 });
+                    this.props.history.push('/')
+                }else{
+                    this.props.saveUserDate(res.item,"userInfo")
+                }
             })
             .catch((err)=>{
 
@@ -139,8 +139,6 @@ class Login extends React.Component {
             </div>
         )
     }
-
-
 }
 
 const styles = {
